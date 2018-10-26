@@ -1,0 +1,60 @@
+body{
+	background-image: url("estesi.jpg ") ; 
+	font-family: "Roboto";
+	padding: 20px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+}
+
+.container{
+	background-color:black;
+	opacity: 0.75;
+	max-width: 50%;
+
+}
+
+.formulario{
+	padding: 10px;
+	color: #43E9A1;
+}
+
+
+input{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	background-color: black;
+	border-bottom-color: gray;
+	color: white;
+	width: 100%;
+}
+
+input[type=date],[type=text],[type=email]{
+	color: white;
+}
+
+input[type=submit],[type=reset]{
+	border-color:  #43E9A1;
+	border-style: groove;
+}
+
+select{
+	font-family: "Roboto";
+	border-top: none;
+	border-left: none;
+	border-right: none;	
+	background-color: black;
+	color: white;
+	border-bottom-color: gray;
+	width: 100%;
+}
+
+
+@media only screen and (min-width: 0px){
+	.container{max-width: 100%;}
+}
+
+@media only screen and (min-width: 992px){
+	.container{max-width: 50%;}
+}
