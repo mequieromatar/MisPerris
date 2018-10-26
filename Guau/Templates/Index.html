@@ -22,19 +22,19 @@
 					Datos solicitados:<br><br><br>
 					<!-- EMAIL -->
 					Email:<br>
-					<input type="email" name="email-usuario" id = "email-usuario" placeholder="example@email.com" required="debe llenar este campo"><br><br><br>
+					<input type="email" name="email_usuario" id = "email-usuario" placeholder="example@email.com" required="debe llenar este campo"><br><br><br>
 					<!-- RUN -->
 					Run:<br>
-					<input type="text" name="run-usuario" id="run-usuario" placeholder="12345678-9" maxlength="10" onkeypress="return SoloNumerok(event)" required="debe llenar este campo"><br><br><br>
+					<input type="text" name="run_usuario" id="run-usuario" placeholder="12345678-9" maxlength="10" onkeypress="return SoloNumerok(event)" required="debe llenar este campo"><br><br><br>
 					<!-- Nombre completo -->
 					Nombre Completo:<br>
-					<input type="text" name="nombre-usuario" id="nombre-usuario" placeholder="Nicolas Barros Ribeiro" onkeypress="return letras(event)" required="debe llenar este campo"><br><br><br>
+					<input type="text" name="nombre_usuario" id="nombre-usuario" placeholder="Nicolas Barros Ribeiro" onkeypress="return letras(event)" required="debe llenar este campo"><br><br><br>
 					<!-- Telefono -->
 					Teléfono de contacto:<br>
-					<input type="text" name="fono-usuario" id="fono-usuario" placeholder="9 1234 5678" maxlength = "9" onkeypress="return SoloNumero(event)" required="debe llenar este campo"><br><br><br>
+					<input type="text" name="fono_usuario" id="fono-usuario" placeholder="9 1234 5678" maxlength = "9" onkeypress="return SoloNumero(event)" required="debe llenar este campo"><br><br><br>
 					<!-- Fecha de nacimiento (max se utiliza para restringir que se ingresen fechas que sean superioes a la colocadas entre las comillas)-->
 					Fecha de nacimiento:<br>
-					<input type="date" name="fechanac-usuario" id="fechanac-usuario" max="2001-01-01" required="debe llenar este campo"><br><br><br>
+					<input type="date" name="fechanac_usuario" id="fechanac-usuario" max="2001-01-01" required="debe llenar este campo"><br><br><br>
 					<!-- Region -->
 					Región:<br>
 					<select id="regiones" name="regiones" style="color: white" required="debe llenar este campo"></select><br><br><br>
@@ -43,7 +43,7 @@
 					<select id="comunas" name="comunas" style="color: white" required="debe llenar este campo"></select><br><br><br>
 					<!-- Tipo de vivienda -->
 					Tipo de vivienda:<br>
-					<select style="color: white" required="debe llenar este campo">
+					<select name="tipo_vivienda" style="color: white" required="debe llenar este campo">
 						<option value="defaul">Seleccione tipo de viviendo</option>
 						<option value="casa-con-patio-grande">Casa con patio grande</option>
 						<option value="casa-con-patio-pequeño">Casa con patio pequeño</option>
