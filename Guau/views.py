@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    # this is your new view
+    # Vista principal de los perris
     return render(request, 'misperritos.html')
 
 def form(request):
-    # this is your new view
+    # Este es el formulario del postulante
     return render(request, 'Index.html')
