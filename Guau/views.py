@@ -8,3 +8,7 @@ def index(request):
 def form(request):
     # Este es el formulario del postulante
     return render(request, 'Index.html')
+
+def form(request):
+    # Este es el login
+    return render(request, 'Login.html')

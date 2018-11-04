@@ -1,0 +1,25 @@
+body{
+	background-image: url("perro.jpg") ;
+	font-family: "Roboto";
+	 text-align: center;
+	padding: 50px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.cuadro	{
+	background-color:#35A256;
+	opacity: 0.75;
+	max-width: 15vw;
+	padding: 5vw;
+	color: #000000;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media only screen and (min-width: 0px){
+	.cuadro{max-width: 100%;}
+}
+
+@media only screen and (min-width: 992px){
+	.cuadro{max-width: 50%;}
+}
