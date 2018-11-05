@@ -18,7 +18,8 @@
 	<div class="container">
 		<div class="row" >
 			<div class="formulario col-xs-12">
-				<form id="Formulario" action="/create">
+				<form id="Formulario" method="post">
+					  {% csrf_token%}
 					Datos solicitados:<br><br><br>
 					<!-- EMAIL -->
 					Email:<br>

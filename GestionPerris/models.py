@@ -22,3 +22,10 @@ class adoptante(models.Model):
     tipo_viviendas = (('G','Casa con patio grande'),
     ('P','Casa con patio grande'),('S','Casa sin patio'),('D','Departamento'))
     tipo_vivienda = models.CharField(max_length=1, choices=tipo_viviendas, default='G', null=False)
+
+class usuarioUwu(models.Model):
+        email_usuario = models.CharField(max_length=40)
+        uname = models.CharField(max_length=50, primary_key=True)
+        psw = models.CharField(max_length=40, null=False)
+        tipo_usuario = (('1','administrador'),('2', 'adoptante'))
+        tip = models.CharField(max_length=40,choices=tipo_usuario, null=False)
