@@ -6,32 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
     <link rel="stylesheet" href="{%static 'stlog.css' %} ">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title></title>
   </head>
   <body>
-      <form method="post">
-        <div class="container">
-          <div class="cuadro">
-            <div class="row" >
-              <div class="form-group col-xs-12">
-                    <label for="Username">Nombre de usuario:</label>
-                    <input class="form-control" type="text" name="username">
-              </div>
-            </div>
-            <div class="row" >
-              <div class="form-group col-xs-12">
-                    <label for="Username">Contraseña:</label>
-                    <input class="form-control" type="password" name="password">
-              </div>
-            </div>
-            <div class="row" >
-              <div class="form-group col-xs-12">
-                    <a href="#" font color="red">Olvidé mi contraseña</a>
-                    <input class="btn btn-primary" type="submit" value="Ingresar">
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+    <form action="action_page.php" class="cuadro">
+      <div class="imgcontainer">
+        <img src="{%static 'patita.png' %}" alt="#" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Nombre de usuario</b></label>
+        <input type="text" placeholder="Nombre de usuario" name="uname" required>
+
+        <label for="psw"><b>contraseña</b></label>
+        <input type="password" placeholder="Contraseña" name="psw" required>
+
+        <button type="submit">Login</button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Volver</button>
+        <span class="psw"><a href="#">¿Olvidé mi contraseña?</a></span>
+      </div>
+    </form>
   </body>
 </html>

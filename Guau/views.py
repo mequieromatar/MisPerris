@@ -9,6 +9,6 @@ def form(request):
     # Este es el formulario del postulante
     return render(request, 'Index.html')
 
-def form(request):
+def forma(request):
     # Este es el login
     return render(request, 'Login.html')
