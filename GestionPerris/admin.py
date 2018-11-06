@@ -4,3 +4,4 @@ from GestionPerris.models import *
 
 admin.site.register(perro)
 admin.site.register(adoptante)
+admin.site.register(usuarioUwu)

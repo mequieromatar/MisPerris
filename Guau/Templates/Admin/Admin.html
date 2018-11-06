@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <title>Administrador</title>
+  </head>
+  <body>
+    <div class="container">
+      <table id="tt" class="easyui-datagrid" style="width:600px;height:auto;">
+        <tr>
+            <th field="id_perro">id perro</th>
+            <th field="nombre_perro">nombre perro</th>
+            <th field="raza_predom">raza predominante</th>
+            <th field="descrip">descripción</th>
+            <th field="estados">estado</th>
+        </tr>
+      </table>
+
+    </div>
+  </body>
+</html>
