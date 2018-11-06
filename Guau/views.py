@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import views as auth_views
-from GestionPerris.Forms import adoptanteForm
-from GestionPerris.models import adoptante
+from GestionPerris.Forms import adoptanteForm, usuarioUwuForm
+from GestionPerris.models import adoptante, usuarioUwu
 # Create your views here.
 def index(request):
     # Vista principal de los perris
@@ -35,3 +35,19 @@ def forma(request):
 def admin(request):
     # Alfa el jefe
     return render(request, 'Admin.html')
+
+def regi(request):
+    if request.method == "POST":
+         forma = usuarioUwuForm(request.POST)
+            if forma.is_valid():
+                uname = request.POST.get('uname','')
+                email_usuario = request.POST.get('email_usuario','')
+                psw = request.POST.get('psw','')
+                tip = request.POST.get('tip','1')
+                usuario_obj = usuarioUwu(uname = uname, email_usuario = email_usuario, psw = psw, tip = tip)
+                usuario_obj.save()
+            else:
+                forma= usuario_obj('usuarioUwu')
+
+
+            return render(request, 'Registro.hmtl')

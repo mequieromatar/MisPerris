@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+     {% load static %}
+     	<link rel="stylesheet" href="{% static 'EstiloUwu.css' %}">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="post">
+        {% csrf_token%}
+  <div class="container">
+    <h1>Registro</h1>
+    <hr>
+
+    <label for="uname"><b>Usuario</b></label>
+    <input type="text" placeholder="Ingrese su nombre de usuario" name="uname" required>
+
+    <label for="email_usuario"><b>Email</b></label>
+    <input type="email" placeholder="Ingrese su correo electronico" name="email_usuario " required>
+
+    <label for="psw"><b>Contraseña</b></label>
+    <input type="password" placeholder="Ingrese su contraseña" name="psw" required>
+
+
+    <button type="submit" class="registerbtn">Registrarse</button>
+  </div>
+
+  <div class="container signin">
+    <p>¿Ya tiene una cuenta? <a href="#">Inciar sesion</a>.</p>
+  </div>
+</form>
+
+  </body>
+</html>

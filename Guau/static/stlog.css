@@ -35,6 +35,12 @@ button:hover {
     background-color: #f44336;
 }
 
+.Crearbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #1E97C1;
+}
+
 /* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
