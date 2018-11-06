@@ -10,6 +10,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('Guau.urls')),
+    path(r'home/', include(('Guau.urls', 'Guau'), namespace="Guau")),
     path('', RedirectView.as_view(url='/home/')),
 ]

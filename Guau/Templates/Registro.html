@@ -7,7 +7,7 @@
     <title></title>
   </head>
   <body>
-    <form method="post">
+    <form method="post" action="">
         {% csrf_token%}
   <div class="container">
     <h1>Registro</h1>
@@ -17,7 +17,7 @@
     <input type="text" placeholder="Ingrese su nombre de usuario" name="uname" required>
 
     <label for="email_usuario"><b>Email</b></label>
-    <input type="email" placeholder="Ingrese su correo electronico" name="email_usuario " required>
+    <input type="email" placeholder="Ingrese su correo electronico" name="email_usuario" required>
 
     <label for="psw"><b>Contraseña</b></label>
     <input type="password" placeholder="Ingrese su contraseña" name="psw" required>

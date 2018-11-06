@@ -1,11 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from django.contrib.auth import views as auth_views
-
 from GestionPerris.Forms import adoptanteForm, usuarioUwuForm
 from GestionPerris.models import adoptante, usuarioUwu
 
-from GestionPerris.forms import adoptanteForm
-from GestionPerris.models import adoptante
+
 
 # Create your views here.
 def index(request):
@@ -40,14 +38,17 @@ def forma(request):
 def admin(request):
     # Alfa el jefe
 
-    return render(request, 'Admin.html')
+        return render(request, 'admin/gestionPerros.html')
 
 def regi(request):
-
-
+        if request.method == "POST":
             formita = usuarioUwuForm(request.POST)
-            formita.save()
-            return render(request, 'Registro.hmtl')
-
-
-    return render(request, 'admin/gestionPerros.html')
+            print('Resultado :',request.POST)
+            if formita.is_valid():
+                print('Es valido')
+                formita.save()
+                return redirect('Guau:Registro')
+            else:
+                print(formita.errors)
+                formita = usuarioUwuForm()
+        return render(request, 'Registro.html')

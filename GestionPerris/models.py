@@ -27,5 +27,5 @@ class usuarioUwu(models.Model):
         email_usuario = models.CharField(max_length=40)
         uname = models.CharField(max_length=50, primary_key=True)
         psw = models.CharField(max_length=40, null=False)
-        tipo_usuario = (('1','administrador'),('2', 'adoptante'))
-        tip = models.CharField(max_length=40,choices=tipo_usuario,default='2', null=False)
+        tipo_usuario = ((1,'administrador'),(2, 'adoptante'))
+        tip = models.IntegerField(choices=tipo_usuario,default=2)
