@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth import views as auth_views
+<<<<<<< HEAD
 from GestionPerris.Forms import adoptanteForm, usuarioUwuForm
 from GestionPerris.models import adoptante, usuarioUwu
+=======
+from GestionPerris.forms import adoptanteForm
+from GestionPerris.models import adoptante
+>>>>>>> 51aeb774ebe798d2ce2bf01acd5507f406638d3a
 # Create your views here.
 def index(request):
     # Vista principal de los perris
@@ -34,6 +39,7 @@ def forma(request):
 
 def admin(request):
     # Alfa el jefe
+<<<<<<< HEAD
     return render(request, 'Admin.html')
 
 def regi(request):
@@ -51,3 +57,6 @@ def regi(request):
 
 
             return render(request, 'Registro.hmtl')
+=======
+    return render(request, 'admin/gestionPerros.html')
+>>>>>>> 51aeb774ebe798d2ce2bf01acd5507f406638d3a
