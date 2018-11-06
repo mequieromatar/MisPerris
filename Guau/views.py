@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import views as auth_views
-from GestionPerris.Forms import adoptanteForm
+from GestionPerris.forms import adoptanteForm
 from GestionPerris.models import adoptante
 # Create your views here.
 def index(request):
@@ -34,4 +34,4 @@ def forma(request):
 
 def admin(request):
     # Alfa el jefe
-    return render(request, 'Admin.html')
+    return render(request, 'admin/gestionPerros.html')

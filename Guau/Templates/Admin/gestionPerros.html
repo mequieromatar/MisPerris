@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <title>Administrador</title>
+  </head>
+  <body>
+    {% block content %}
+
+    <table class="table table-bordered">
+    	<thead>
+    		<tr>
+    			<td>#</td>
+          <td>ID perro</td>
+    			<td>Nombre</td>
+          <td>Raza Predominante</td>
+          <td>Descripción</td>
+          <td>Estado</td>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		{% if object_list %}
+    		{% for mascota in object_list %}
+    		<tr>
+    			<td>{{ mascota.id }}</td>
+    			<td>
+    				<a class="btn btn-primary" href="{% url 'mascota:mascota_editar' mascota.id %}">Editar</a>
+    				<a class="btn btn-danger" href="{% url 'mascota:mascota_eliminar' mascota.id %}">Eliminar</a>
+    			</td>
+    		</tr>
+    		{% endfor %}
+
+    		{% else %}
+    		<h1>No hay registros de mascotas</h1>
+    		{% endif %}
+    	</tbody>
+    </table>
+    <ul class="pager">
+    	<li>
+    		{% if page_obj.has_previous %}
+           	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    		{% endif %}
+            </li>
+    	<li>
+    		{% if page_obj.has_next %}
+         	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        	{% endif %}
+        </li>
+    </ul>
+    {% endblock%}
+    </div>
+  </body>
+</html>
