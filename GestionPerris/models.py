@@ -12,16 +12,16 @@ class perro(models.Model):
     estado = models.CharField(max_length=1, choices=estados, default='R', null=False)
 
 class adoptante(models.Model):
+    #usuario = models.OneToOneField(User)
     email_usuario = models.CharField(max_length=40, null=False)
     run_usuario = models.CharField(max_length=10, primary_key=True)
     nombre_usuario = models.CharField(max_length=50, null=False)
     fono_usuario= models.CharField(max_length=9, null=False)
     fechanac_usuario = models.DateField(null=False)
-    regiones = models.CharField(max_length=20, null=False)
-    comunas = models.CharField(max_length=20, null=False)
-    tipo_viviendas = (('G','Casa con patio grande'),
-    ('P','Casa con patio grande'),('S','Casa sin patio'),('D','Departamento'))
-    tipo_vivienda = models.CharField(max_length=1, choices=tipo_viviendas, default='G', null=False)
+    regiones = models.CharField(max_length=40, null=False)
+    comunas = models.CharField(max_length=40, null=False)
+    tipo_viviendas = ((1,'Casa con patio grande'),(2,'Casa con patio pequeño'),(3,'Mercedes'),(4,'Departamento'))
+    tipo_vivienda = models.IntegerField(choices=tipo_viviendas)
 
 class usuarioUwu(models.Model):
         email_usuario = models.CharField(max_length=40)
