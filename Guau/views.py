@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import views as auth_views
-from GestionPerris.Forms import adoptanteForm, usuarioUwuForm, perroForm
-from GestionPerris.models import adoptante, usuarioUwu, perro
+from django.contrib import auth
+from GestionPerris.Forms import *
+from GestionPerris.models import *
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -24,23 +24,28 @@ def form(request):
             formita = adoptanteForm()
         # Este es el formulario del postulante
     return render(request, 'index.html')
+
+
 # login
-
-
 def ingre(request):
-    form = usuarioUwuForm(request.POST)
-    if form.is_valid():
-        data = form.cleaned_data
-        user = authenticate(uname=data.get("uname"), psw=data.get("psw"))
-        if user is not None:
-            login(request, user)
-            return redirect('Guau:login')
-    return render(request, "login.html")
+    if request.user.is_authenticated:
+        return redirect('Guau:index')
+    else:
+        if request.method=="POST":
+            print('valido')
+            user = auth.authenticate(username=request.POST.get("uname"), password=request.POST.get("psw"))
+            print(user)
+            if user is not None:
+                print('yes')
+                auth.login(request, user)
+                return redirect('Guau:index')
+            else:
+                print('no existe la wea')
+        return render(request, "login.html")
+
 # logout
-
-
 def salir(request):
-    logout(request)
+    auth.logout(request)
     return redirect("/")
 
 
@@ -57,6 +62,7 @@ def regi(request):
             print('Es valido')
             data = formita.cleaned_data
             u = User.objects.create_user(data.get("uname"), data.get("email_usuario"), data.get("psw"))
+            u.is_staff = False
             u.save()
             usuario = usuarioUwu(uname=data.get("uname"), email_usuario=data.get("email_usuario"), psw=data.get("psw"), usuario=u)
             usuario.save()
@@ -69,21 +75,52 @@ def regi(request):
 
 def registroPerro(request):
     # Registro de perros
-    if request.method == "POST":
-        formita = perroForm(request.POST, request.FILES)
-        print('Resultado :', request.POST, request.FILES)
-        if formita.is_valid():
-            print('Es valido')
-            formita.save()
-            return redirect('Guau:registroPerro')
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            if request.method == "POST":
+                formita = perroForm(request.POST, request.FILES)
+                print('Resultado :', request.POST, request.FILES)
+                if formita.is_valid():
+                    print('Es valido')
+                    formita.save()
+                    return redirect('Guau:registroPerro')
+                else:
+                    print(formita.errors)
+                    formita = perroForm()
+            return render(request, 'Admin/gestionPerros.html')
         else:
-            print(formita.errors)
-            formita = perroForm()
-    return render(request, 'Admin/gestionPerros.html')
-
+            return redirect('Guau:index')
+    else:
+        return redirect('Guau:login')
 
 def perroList(request):
     # Listado de los Perros
-    perro = Perro.object.all()
-    contexto = {'perros': perros}
-    return render(request, 'Templates/Admin/gestionPerros.html', contexto)
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            perris = perro.objects.all()
+            contexto = {'perros':perris}
+            return render(request,'Admin/listarPerros.html', contexto)
+        else:
+            return redirect('Guau:index')
+    else:
+        return redirect('Guau:login')
+
+def perroEdit(request):
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            perris = perro.objects.get(id="id_perro")
+            if request.method == 'GET':
+                form = perroForm(instance=perris)
+            else:
+                form = perroForm(request.POST, instance=perris)
+                if form.is_valid:
+                    form.save()
+                return redirect('Guau:listarPerros')
+            return render(request, 'Admin/gestionPerros.html', {'form':form})
+        else:
+            return redirect('Guau:index')
+    else:
+        return redirect('Guau:login')
+
+def Galeria(request):
+    return render(request, 'Cliente/Galeria.html')

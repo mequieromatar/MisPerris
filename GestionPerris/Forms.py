@@ -16,3 +16,8 @@ class usuarioUwuForm(forms.ModelForm):
     class Meta:
         model = usuarioUwu
         fields = ('email_usuario','uname','psw')
+
+class loginForm(forms.ModelForm):
+    class Meta:
+        model = usuarioUwu
+        fields = ('uname', 'psw')
