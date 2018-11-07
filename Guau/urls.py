@@ -10,4 +10,5 @@ urlpatterns = [
     path('Registro',views.regi, name="Registro"),
     path('gestionPerros',views.registroPerro, name="gestionPerros"),
     path('listar',views.perroList, name="listarPerros"),
+    path('editar/(?P<id_perro>\d+)/$', views.perroEdit, name="editarPerros"),
 ]

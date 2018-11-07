@@ -72,3 +72,14 @@ def perroList(request):
     perris = perro.objects.all()
     contexto = {'perros':perris}
     return render(request,'Admin/listarPerros.html',contexto)
+
+def perroEdit(request, id_perro):
+    perris = perro.objects.get(id=id_perro)
+    if request.method == 'GET':
+        form = perroForm(instance=perris)
+    else:
+        form = perroForm(request.POST, instance=perris)
+        if form.is_valid:
+            form.save()
+        return redirect('Guau:listarPerros')
+    return render(request, 'Admin/gestionPerros.html', {'form':form})
