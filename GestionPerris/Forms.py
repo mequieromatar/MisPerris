@@ -4,7 +4,7 @@ from .models import *
 class perroForm(forms.ModelForm):
     class Meta:
         model = perro
-        fields = ('nombre_perro','raza_predominante','descripcion','estado',)
+        fields = ('nombre_perro','foto','raza_predominante','descripcion','estado',)
 
 class adoptanteForm(forms.ModelForm):
     class Meta:

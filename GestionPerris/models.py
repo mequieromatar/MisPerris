@@ -8,7 +8,7 @@ class perro(models.Model):
     nombre_perro = models.CharField(max_length=30, null=False)
     raza_predominante = models.CharField(max_length=30, null=False)
     descripcion = models.CharField(max_length=30, null=False)
-    estados = (('R','Rescatado'),('D','Disponible'),('A','adoptado'))
+    estados = (('R','Rescatado'),('D','Disponible'),('A','Adoptado'))
     estado = models.CharField(max_length=1, choices=estados, default='R', null=False)
 
 class adoptante(models.Model):
