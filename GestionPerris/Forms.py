@@ -15,4 +15,4 @@ class adoptanteForm(forms.ModelForm):
 class usuarioUwuForm(forms.ModelForm):
     class Meta:
         model = usuarioUwu
-        fields = ('email_usuario','uname','psw',)
+        fields = ('email_usuario','uname','psw')

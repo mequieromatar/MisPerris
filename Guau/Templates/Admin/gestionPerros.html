@@ -10,6 +10,54 @@
   <body>
     <div class="container">
 
+    {% block content %}
+    <!-- tabla con la lista de los perris -->
+    <table class="table table-bordered">
+    	<thead>
+    		<tr>
+    			<td>#</td>
+          <td>ID perro</td>
+    			<td>Nombre</td>
+          <td>Foto</td>
+          <td>Raza Predominante</td>
+          <td>Descripción</td>
+          <td>Estado</td>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		{% if perros %}
+    		{% for perro in perros %}
+    		<tr>
+    			<td>{{ perro.id_perro }}</td>
+          <td>{{ perro.nombre_perro}}</td>
+          <td>{{ perro.foto}}</td>
+          <td>{{ perro.raza_predominante}}</td>
+          <td>{{ perro.estado}}</td>
+    		</tr>
+    		{% endfor %}
+        
+    		{% else %}
+    		<h1>No hay registros de mascotas</h1>
+    		{% endif %}
+    	</tbody>
+    </table>
+{% endblock%}
+    <!-- pager utilizado para pasar de paginas -->
+    <ul class="pager">
+    	<li>
+    		{% if page_obj.has_previous %}
+           	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    		{% endif %}
+            </li>
+    	<li>
+    		{% if page_obj.has_next %}
+         	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        	{% endif %}
+        </li>
+    </ul>
+
+    <br>
+
     <!-- Panel de registro de perris -->
     <div class="Registro">
       <form method="post" action="" enctype="multipart/form-data">
@@ -38,5 +86,8 @@
             <button type="submit" class="registerbtn">Registrar</button>
           </div>
       </form>
+    </div>
+
+    </div>
   </body>
 </html>

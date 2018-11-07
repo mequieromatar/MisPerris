@@ -25,7 +25,7 @@ class adoptante(models.Model):
     tipo_vivienda = models.IntegerField(choices=tipo_viviendas)
 
 class usuarioUwu(models.Model):
-        usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+        usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
         email_usuario = models.CharField(max_length=40)
         uname = models.CharField(max_length=50, primary_key=True)
         psw = models.CharField(max_length=40, null=False)
