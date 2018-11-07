@@ -23,11 +23,21 @@ def form(request):
             formita = adoptanteForm()
         #Este es el formulario del postulante
     return render(request, 'index.html')
-
-def forma(request):
-    # Este es el login
-    return render(request, 'Login.html')
-
+#login
+def ingre(request):
+    form=usuarioUwuForm(request.POST)
+    if form.is_valid():
+        data=form.cleaned_data
+        user=authenticate(uname=data.get("uname"),psw=data.get("psw"))
+        if user is not None:
+            login(request,user)
+            return redirect('Guau:login')
+    return render(request,"login.html")
+#logout
+def salir(request):
+    logout(request)
+    return redirect("/")
+    
 def admin(request):
     # Alfa el jefe
 

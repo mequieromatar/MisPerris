@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -12,7 +13,7 @@ class perro(models.Model):
     estado = models.CharField(max_length=1, choices=estados, default='R', null=False)
 
 class adoptante(models.Model):
-    #usuario = models.OneToOneField(User)
+
     email_usuario = models.CharField(max_length=40, null=False)
     run_usuario = models.CharField(max_length=10, primary_key=True)
     nombre_usuario = models.CharField(max_length=50, null=False)
@@ -24,6 +25,7 @@ class adoptante(models.Model):
     tipo_vivienda = models.IntegerField(choices=tipo_viviendas)
 
 class usuarioUwu(models.Model):
+        usuario = models.OneToOneField(User, on_delete=models.CASCADE)
         email_usuario = models.CharField(max_length=40)
         uname = models.CharField(max_length=50, primary_key=True)
         psw = models.CharField(max_length=40, null=False)
