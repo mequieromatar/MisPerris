@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect
 from django.contrib.auth import views as auth_views
-from GestionPerris.Forms import adoptanteForm, usuarioUwuForm
-from GestionPerris.models import adoptante, usuarioUwu
+from GestionPerris.Forms import adoptanteForm, usuarioUwuForm, perroForm
+from GestionPerris.models import adoptante, usuarioUwu, perro
 
 
 
@@ -52,3 +52,16 @@ def regi(request):
                 print(formita.errors)
                 formita = usuarioUwuForm()
         return render(request, 'Registro.html')
+
+def registroPerro(request):
+        if request.method == "POST":
+            formita = perroForm(request.POST, request.FILES)
+            print('Resultado :',request.POST, request.FILES)
+            if formita.is_valid():
+                print('Es valido')
+                formita.save()
+                return redirect('Guau:registroPerro')
+            else:
+                print(formita.errors)
+                formita = perroForm()
+        return render(request, 'Admin/gestionPerros.html')
