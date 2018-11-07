@@ -10,29 +10,32 @@ def index(request):
 
 def form(request):
     if request.method == "POST":
-        form = adoptanteForm(request.POST)
-        if form.is_valid():
-            email_usuario = request.POST.get('email_usuario','')
-            run_usuario = request.POST.get('run_usuario','')
-            nombre_usuario = request.POST.get('nombre_usuario','')
-            fono_usuario = request.POST.get('fono_usuario','')
-            fechanac_usuario = request.POST.get('fechanac_usuario','')
-            regiones = request.POST.get('regiones','')
-            comunas = request.POST.get('comunas','')
-            tipo_vivienda = request.POST.get('tipo_vivienda','')
-            adoptante_obj = adoptante(email_usuario = email_usuario, run_usuario = run_usuario, nombre_usuario = nombre_usuario, fono_usuario = fono_usuario,
-            fechanac_usuario = fechanac_usuario, regiones = regiones, comunas = comunas, tipo_vivienda = tipo_vivienda )
-            adoptante_obj.save()
-
+        forma = adoptanteForm(request.POST)
+        print('Resultado :',request.POST)
+        if forma.is_valid():
+            print('Es valido')
+            forma.save()
+            return redirect('Guau:formulario')
         else:
-            form = adoptante_obj('adoptante')
-    # Este es el formulario del postulante
-    return render(request, 'Index.html')
-
-def forma(request):
-    # Este es el login
-    return render(request, 'Login.html')
-
+            print(forma.errors)
+            formita = adoptanteForm()
+        #Este es el formulario del postulante
+    return render(request, 'index.html')
+#login
+def ingre(request):
+    form=usuarioUwuForm(request.POST)
+    if form.is_valid():
+        data=form.cleaned_data
+        user=authenticate(uname=data.get("uname"),psw=data.get("psw"))
+        if user is not None:
+            login(request,user)
+            return redirect('Guau:login')
+    return render(request,"login.html")
+#logout
+def salir(request):
+    logout(request)
+    return redirect("/")
+    
 def admin(request):
     # Alfa el jefe
         return render(request, 'admin/gestionPerros.html')

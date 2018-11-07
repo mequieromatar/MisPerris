@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="row" >
 			<div class="formulario col-xs-12">
-				<form id="Formulario" method="post">
+				<form id="Formulario" method="post"action="">
 					  {% csrf_token%}
 					Datos solicitados:<br><br><br>
 					<!-- EMAIL -->
@@ -46,10 +46,10 @@
 					Tipo de vivienda:<br>
 					<select name="tipo_vivienda" style="color: white" required="debe llenar este campo">
 						<option value="defaul">Seleccione tipo de viviendo</option>
-						<option value="casa-con-patio-grande">Casa con patio grande</option>
-						<option value="casa-con-patio-pequeño">Casa con patio pequeño</option>
-						<option value="casa-sin-patio">Mercedes</option>
-						<option value="departamento">Departamento</option>
+						<option value="1">Casa con patio grande</option>
+						<option value="2">Casa con patio pequeño</option>
+						<option value="3">Mercedes</option>
+						<option value="4">Departamento</option>
 					</select> <br><br><br>
 					<!-- Botones -->
 					<div class="Botones" >
