@@ -35,7 +35,7 @@ def ingre(request):
 def salir(request):
     logout(request)
     return redirect("/")
-    
+
 def admin(request):
     # Alfa el jefe
         return render(request, 'admin/gestionPerros.html')
@@ -61,7 +61,7 @@ def registroPerro(request):
             if formita.is_valid():
                 print('Es valido')
                 formita.save()
-                return redirect('Guau:registroPerro')
+                return redirect('Guau:listarPerros')
             else:
                 print(formita.errors)
                 formita = perroForm()
@@ -69,6 +69,6 @@ def registroPerro(request):
 
 def perroList(request):
     # Listado de los Perros
-    perro = Perro.object.all()
-    contexto = {'perros':perros}
-    return render(request,'Templates/Admin/gestionPerros.html',contexto)
+    perris = perro.objects.all()
+    contexto = {'perros':perris}
+    return render(request,'Admin/listarPerros.html',contexto)

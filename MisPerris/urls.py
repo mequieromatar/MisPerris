@@ -12,4 +12,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'home/', include(('Guau.urls', 'Guau'), namespace="Guau")),
     path('', RedirectView.as_view(url='/home/')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

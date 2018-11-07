@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <title>Administrador</title>
+  </head>
+  <body>
+    <div class="container">
+
+    {% block content %}
+    <!-- tabla con la lista de los perris -->
+    <table class="table table-bordered">
+    	<thead>
+    		<tr>
+          <td>ID perro</td>
+          <td>Foto</td>
+          <td>Nombre</td>
+          <td>Raza Predominante</td>
+          <td>Descripción</td>
+          <td>Estado</td>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		{% if perros %}
+    		{% for perro in perros %}
+    		<tr>
+    			<td>{{ perro.id_perro }}</td>
+          <td><img src='{{perro.foto.url}}' alt="" height="200px" width="200px"></td>
+          <td>{{ perro.nombre_perro}}</td>
+          <td>{{ perro.raza_predominante}}</td>
+          <td>{{ perro.descripcion}}</td>
+          <td>{{ perro.estado}}</td>
+    		</tr>
+    		{% endfor %}
+
+    		{% else %}
+    		<h1>No hay registros de mascotas</h1>
+    		{% endif %}
+    	</tbody>
+    </table>
+{% endblock%}
+    <!-- pager utilizado para pasar de paginas -->
+    <!-- <ul class="pager">
+    	<li>
+    		{% if page_obj.has_previous %}
+           	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    		{% endif %}
+            </li>
+    	<li>
+    		{% if page_obj.has_next %}
+         	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        	{% endif %}
+        </li>
+    </ul> -->
+
+    </div>
+  </body>
+</html>
