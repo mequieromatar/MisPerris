@@ -3,8 +3,6 @@ from django.contrib.auth import views as auth_views
 from GestionPerris.Forms import adoptanteForm, usuarioUwuForm, perroForm
 from GestionPerris.models import adoptante, usuarioUwu, perro
 
-
-
 # Create your views here.
 def index(request):
     # Vista principal de los perris
@@ -37,7 +35,6 @@ def forma(request):
 
 def admin(request):
     # Alfa el jefe
-
         return render(request, 'admin/gestionPerros.html')
 
 def regi(request):
@@ -54,6 +51,7 @@ def regi(request):
         return render(request, 'Registro.html')
 
 def registroPerro(request):
+    # Registro de perros
         if request.method == "POST":
             formita = perroForm(request.POST, request.FILES)
             print('Resultado :',request.POST, request.FILES)
@@ -65,3 +63,9 @@ def registroPerro(request):
                 print(formita.errors)
                 formita = perroForm()
         return render(request, 'Admin/gestionPerros.html')
+
+def perroList(request):
+    # Listado de los Perros
+    perro = Perro.object.all()
+    contexto = {'perros':perros}
+    return render(request,'Templates/Admin/gestionPerros.html',contexto)

@@ -11,7 +11,7 @@
     <div class="container">
 
     {% block content %}
-
+    <!-- tabla con la lista de los perris -->
     <table class="table table-bordered">
     	<thead>
     		<tr>
@@ -25,23 +25,24 @@
     		</tr>
     	</thead>
     	<tbody>
-    		{% if object_list %}
-    		{% for perro in object_list %}
+    		{% if perros %}
+    		{% for perro in perros %}
     		<tr>
     			<td>{{ perro.id_perro }}</td>
-    			<td>
-    				<a class="btn btn-primary" href="{% url 'mascota:mascota_editar' perro.id_perro %}">Editar</a>
-    				<a class="btn btn-danger" href="{% url 'mascota:mascota_eliminar' perro.id_perro %}">Eliminar</a>
-    			</td>
+          <td>{{ perro.nombre_perro}}</td>
+          <td>{{ perro.foto}}</td>
+          <td>{{ perro.raza_predominante}}</td>
+          <td>{{ perro.estado}}</td>
     		</tr>
     		{% endfor %}
-
+        
     		{% else %}
     		<h1>No hay registros de mascotas</h1>
     		{% endif %}
     	</tbody>
     </table>
-
+{% endblock%}
+    <!-- pager utilizado para pasar de paginas -->
     <ul class="pager">
     	<li>
     		{% if page_obj.has_previous %}
@@ -54,37 +55,36 @@
         	{% endif %}
         </li>
     </ul>
-    {% endblock%}
+
     <br>
 
+    <!-- Panel de registro de perris -->
     <div class="Registro">
       <form method="post" action="" enctype="multipart/form-data">
           {% csrf_token %}
 
-        <h1>Registro de Perris</h1><br>
-        <label for="">Nombre Perro</label><br>
+          <h1>Registro de Perris</h1><br>
+          <label for="">Nombre Perro</label><br>
+          <input type="text" name="nombre_perro"><br>
 
-        <input type="text" name="nombre_perro"><br>
-        <label for="">Fotografia</label><br>
+          <label for="">Fotografia</label><br>
+          <input name="foto" type="file"/><br><br>
 
-        <input name="foto" type="file"/><br><br>
-        <label for="">Raza Predominante</label><br>
+          <label for="">Raza Predominante</label><br>
+          <input type="text" name="raza_predominante"><br>
 
-        <input type="text" name="raza_predominante"><br>
-        <label for="">Descripción</label><br>
+          <label for="">Descripción</label><br>
+          <input type="text" name="descripcion"><br>
 
-        <input type="text" name="descripcion"><br>
-        <label for="">Estado</label><br>
-
-        <select name="estado">
-          <option value="R">Rescatado</option>
-          <option value="D">Disponible</option>
-          <option value="A">Adoptado</option>
-        </select>
-        <div class="button">
-          <br>
-          <button type="submit" class="registerbtn">Registrar</button>
-        </div>
+          <label for="">Estado</label><br>
+          <select name="estado">
+            <option value="R">Rescatado</option>
+            <option value="D">Disponible</option>
+            <option value="A">Adoptado</option>
+          </select>
+          <div class="button"><br>
+            <button type="submit" class="registerbtn">Registrar</button>
+          </div>
       </form>
     </div>
 
