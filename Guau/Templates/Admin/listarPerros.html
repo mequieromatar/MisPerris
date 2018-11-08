@@ -13,57 +13,44 @@
 
     {% block content %}
     <!-- tabla con la lista de los perris -->
-    <table class="table table-bordered">
-    	<thead>
-    		<tr>
-          <th>ID perro</th>
-          <th>Foto</th>
-          <th>Nombre</th>
-          <th>Raza Predominante</th>
-          <th>Descripción</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		{% if perros %}
-    		{% for perro in perros %}
-        <h1>Lista de Perris</h1>
-    		<tr>
-    			<td>{{ perro.id_perro }}</td>
-          <td><img src='{{perro.foto.url}}' alt="" height="100px" width="100px"></td>
-          <td>{{ perro.nombre_perro}}</td>
-          <td>{{ perro.raza_predominante}}</td>
-          <td>{{ perro.descripcion}}</td>
-          <td>{{ perro.estado}}</td>
-          <td>
-              <a class="btn btn-primary" href='/editarPerros/{{perro.id_perro}}'>
-              Editar</a>
-          </td>
-    		</tr>
-    		{% endfor %}
+      <table class="table table-bordered">
+      	<thead>
+      		<tr>
+            <th>ID perro</th>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Raza Predominante</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+      		</tr>
+      	</thead>
+      	<tbody>
+          <h1>Lista de Perris</h1>
+      		{% if perros %}
+      		{% for perro in perros %}
+      		<tr>
+      			<td>{{ perro.id_perro }}</td>
+            <td><img src='{{perro.foto.url}}' alt="" height="100px" width="100px"></td>
+            <td>{{ perro.nombre_perro}}</td>
+            <td>{{ perro.raza_predominante}}</td>
+            <td>{{ perro.descripcion}}</td>
+            <td>{{ perro.estado}}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url 'Guau:editarPerros' perro.id_perro %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'Guau:eliminarPerros' perro.id_perro %}">Eliminar</a>
+            </td>
+      		</tr>
+      		{% endfor %}
 
-    		{% else %}
-    		<h1>No hay registros de mascotas</h1>
-    		{% endif %}
-    	</tbody>
-    </table>
-{% endblock%}
-    <!-- pager utilizado para pasar de paginas -->
-    <!-- <ul class="pager">
-    	<li>
-    		{% if page_obj.has_previous %}
-           	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-    		{% endif %}
-            </li>
-    	<li>
-    		{% if page_obj.has_next %}
-         	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        	{% endif %}
-        </li>
-    </ul> -->
+      		{% else %}
+      		<h1>No hay registros de mascotas</h1>
+      		{% endif %}
+      	</tbody>
+      </table>
+    {% endblock%}
 
-
+    <a href='/home/gestionPerros'>Registro</a>
     </div>
   </body>
 </html>
