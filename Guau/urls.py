@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from Guau import views
 
 urlpatterns = [
@@ -10,6 +11,7 @@ urlpatterns = [
     path('Registro',views.regi, name="Registro"),
     path('gestionPerros',views.registroPerro, name="gestionPerros"),
     path('listar',views.perroList, name="listarPerros"),
-    path('editar', views.perroEdit, name="editarPerros"),
+    path('edita/<int:id>/', views.Edita, name='edita'),
     path('galeria', views.Galeria, name="galeria"),
+    path('recuperar',views.Recupera, name="recuperar"),
 ]

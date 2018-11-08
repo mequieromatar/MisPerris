@@ -1,0 +1,62 @@
+body{
+  background-color: #1F2739;
+  color: #fff;
+}
+
+.formulario{
+  margin: 10px;
+
+}
+
+h1 {
+  font-size:3em;
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+button{
+  background-color: #4DC3FA;
+  padding: 10px 24px;
+  border-radius: 8px;
+
+  color: black;
+  border: 2px solid black;
+}
+
+button:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  color: #fff;
+}
+
+
+input {
+  width: 100%;
+  opacity: 0.5;
+  border:1px;
+	padding: 7px;
+}
+
+
+textarea{
+  width: 100%;
+  opacity: 0.5;
+  border:1px solid #fff;
+	padding: 7px;
+}
+
+select{
+  width: 100%;
+  opacity: 0.5;
+  border:1px solid #fff;
+	padding: 7px;
+}
+
+input,label {
+  display: block;
+}
+
+form {
+  display: block;
+}

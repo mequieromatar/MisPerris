@@ -21,6 +21,7 @@
 				<div class="col-xs-12 col-md-4">
 					<img src= "{% static 'img/logo.png' %}" alt="">
 					<a href="{% url 'Guau:login'%}"> <img src="{%static 'user.png' %}"> </a>
+					<a href="{% url 'Guau:logout'%}"> <img src="{%static 'salida.png' %}"> </a>
 					<div class="visible-xs visible-sm" style="height: 1px;width: 100vw; background: white;display: block;margin-left: -15px;">
 					</div>
 				</div>
@@ -35,7 +36,7 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-2 nav-enlace">
-					<a href="#">Servicios</a>
+					<a href="{% url 'Guau:galeria' %}">Servicios</a>
 					<div class="visible-xs visible-sm" style="height: 1px;width: 100vw; background: white;display: block;margin-left: -15px;">
 					</div>
 				</div>
@@ -97,16 +98,16 @@
 				<div class="col-xs-2">
 				</div>
 				<div class="col-xs-2">
-					<img style="padding-left:0px;" {% static src="./iconos/facebook.png"} alt="" />
+					<img style="padding-left:0px;"  src="{% static 'iconos/facebook.png'%}" alt="" />
 				</div>
 				<div class="col-xs-2">
-					<img style="padding-left:10px;" {% static src="./iconos/google.png"} alt="" />
+					<img style="padding-left:10px;"  src="{% static 'iconos/google.png'%}" alt="" />
 				</div>
 				<div class="col-xs-2">
-					<img style="padding-left:10px;" {% static src="./iconos/instagram.png"} alt="" />
+					<img style="padding-left:10px;"  src="{% static 'iconos/instagram.png'%}" alt="" />
 				</div>
 				<div class="col-xs-2">
-					<img style="padding-left:10px;" {% static src="./iconos/gmail.png"} alt="" />
+					<img style="padding-left:10px;" src="{% static 'iconos/gmail.png'%}" alt="" />
 				</div>
 				<div class="col-xs-2">
 				</div>

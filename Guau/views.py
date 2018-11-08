@@ -29,7 +29,10 @@ def form(request):
 # login
 def ingre(request):
     if request.user.is_authenticated:
-        return redirect('Guau:index')
+            if request.user.is_staff:
+                return  redirect('Guau:gestionPerros')
+            else:
+                return redirect('Guau:index')
     else:
         if request.method=="POST":
             print('valido')
@@ -40,7 +43,7 @@ def ingre(request):
                 auth.login(request, user)
                 return redirect('Guau:index')
             else:
-                print('no existe la wea')
+                print('Ha ocurido un error')
         return render(request, "login.html")
 
 # logout
@@ -83,7 +86,7 @@ def registroPerro(request):
                 if formita.is_valid():
                     print('Es valido')
                     formita.save()
-                    return redirect('Guau:registroPerro')
+                    return redirect('Guau:listarPerros')
                 else:
                     print(formita.errors)
                     formita = perroForm()
@@ -105,7 +108,7 @@ def perroList(request):
     else:
         return redirect('Guau:login')
 
-def perroEdit(request):
+def Edita(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
             perris = perro.objects.get(id="id_perro")
@@ -124,3 +127,7 @@ def perroEdit(request):
 
 def Galeria(request):
     return render(request, 'Cliente/Galeria.html')
+
+
+def Recupera(request):
+    return render(request, 'Recuperar.html')

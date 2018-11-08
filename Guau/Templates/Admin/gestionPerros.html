@@ -5,89 +5,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
-    <title>Administrador</title>
+    <link rel="stylesheet" href="{% static 'gestionPerros.css' %} ">
+    <title>Gestion Perris</title>
   </head>
   <body>
     <div class="container">
-
-    {% block content %}
-    <!-- tabla con la lista de los perris -->
-    <table class="table table-bordered">
-    	<thead>
-    		<tr>
-    			<td>#</td>
-          <td>ID perro</td>
-    			<td>Nombre</td>
-          <td>Foto</td>
-          <td>Raza Predominante</td>
-          <td>Descripción</td>
-          <td>Estado</td>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		{% if perros %}
-    		{% for perro in perros %}
-    		<tr>
-    			<td>{{ perro.id_perro }}</td>
-          <td>{{ perro.nombre_perro}}</td>
-          <td>{{ perro.foto}}</td>
-          <td>{{ perro.raza_predominante}}</td>
-          <td>{{ perro.estado}}</td>
-    		</tr>
-    		{% endfor %}
-        
-    		{% else %}
-    		<h1>No hay registros de mascotas</h1>
-    		{% endif %}
-    	</tbody>
-    </table>
-{% endblock%}
-    <!-- pager utilizado para pasar de paginas -->
-    <ul class="pager">
-    	<li>
-    		{% if page_obj.has_previous %}
-           	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-    		{% endif %}
-            </li>
-    	<li>
-    		{% if page_obj.has_next %}
-         	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        	{% endif %}
-        </li>
-    </ul>
-
-    <br>
-
     <!-- Panel de registro de perris -->
-    <div class="Registro">
-      <form method="post" action="" enctype="multipart/form-data">
-          {% csrf_token %}
+    <h1>Registro de Perris</h1><br>
+      <div class="Registro">
 
-          <h1>Registro de Perris</h1><br>
-          <label for="">Nombre Perro</label><br>
-          <input type="text" name="nombre_perro"><br>
+        <form class="formulario" method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
 
-          <label for="">Fotografia</label><br>
-          <input name="foto" type="file"/><br><br>
+            <label for="">Nombre Perro</label>
+            <input type="text" name="nombre_perro"><br>
 
-          <label for="">Raza Predominante</label><br>
-          <input type="text" name="raza_predominante"><br>
+            <label for="">Fotografia</label>
+            <input name="foto" type="file"/><br>
 
-          <label for="">Descripción</label><br>
-          <input type="text" name="descripcion"><br>
+            <label for="">Raza Predominante</label>
+            <input type="text" name="raza_predominante"><br>
 
-          <label for="">Estado</label><br>
-          <select name="estado">
-            <option value="R">Rescatado</option>
-            <option value="D">Disponible</option>
-            <option value="A">Adoptado</option>
-          </select>
-          <div class="button"><br>
-            <button type="submit" class="registerbtn">Registrar</button>
-          </div>
-      </form>
-    </div>
+            <label for="">Descripción</label>
+            <textarea name="descripcion" rows="3" cols="18"></textarea>
 
+            <label for="">Estado</label>
+            <select name="estado">
+              <option value="R">Rescatado</option>
+              <option value="D">Disponible</option>
+              <option value="A">Adoptado</option>
+            </select><br>
+            <div class="button"><br>
+              <button type="submit" class="registerbtn">Registrar</button>
+            </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>

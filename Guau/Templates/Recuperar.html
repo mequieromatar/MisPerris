@@ -1,0 +1,30 @@
+
+<html lang="es">
+<head>
+	  {% load static %}
+
+<link rel="stylesheet" href="{% static 'EstRec.css' %}">
+<meta name="viewport" content="width-device-width, initial-scale=1">
+	<title>Recuperar contraseña</title>
+</head>
+<body>
+  <form action="" method="post" style="border:1px solid #ccc">
+    {% csrf_token %}
+    <div class="container">
+      <h1>Recuperar contraseña/Cambiar contraseña</h1>
+      <hr>
+
+      <label for="uname"><b>Nombre de usuario</b></label>
+      <input type="text" placeholder="Ingrese su nombre de usuario" name="uname" required>
+
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Ingrese su nueva contraseña" name="psw" required>
+
+
+      <div class="clearfix">
+        <button type="button" class="cancelbtn">Volver</button>
+        <button type="submit" class="signupbtn">Guardar</button>
+      </div>
+    </div>
+  </form>
+</body>
