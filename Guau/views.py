@@ -117,17 +117,9 @@ def Edita(request, id):
             else:
                 form = perroForm(request.POST, instance=perris)
                 if form.is_valid:
-                    print('buena')
                     form.save()
-                else:
-                    print('mal')
                 return redirect('Guau:listarPerros')
-
-
-            return render(request, 'Admin/gestionPerros.html', {'form':form})
-
             return render(request, 'Admin/Editar.html', {'form':form})
-
         else:
             return redirect('Guau:index')
     else:
