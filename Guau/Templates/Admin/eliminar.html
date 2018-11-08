@@ -11,20 +11,15 @@
   <body>
     <div class="container">
     <!-- Panel de registro de perris -->
-    <h1>Registro de Perris</h1><br>
-      <div class="Registro">
 
-        <form class="formulario" method="post" action="" enctype="multipart/form-data">
+        <form class="formulario" method="post" action="">
             {% csrf_token %}
-            {{ form }}
             <div class="button"><br>
-              <button type="submit" class="registerbtn">Registrar</button>
-              <a href='/home/listar'>Lista</a>
+              ¿Realmente desea eliminar este perro?
+              <button type="submit" class="btn btn-danger">Si, eliminar</button>
             </div>
 
         </form>
-      </div>
-
     </div>
   </body>
 </html>

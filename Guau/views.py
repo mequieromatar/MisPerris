@@ -108,10 +108,10 @@ def perroList(request):
     else:
         return redirect('Guau:login')
 
-def Edita(request):
+def Edita(request, id):
     if request.user.is_authenticated:
         if request.user.is_staff:
-            perris = perro.objects.get(id="id_perro")
+            perris = perro.objects.get(id_perro=id)
             if request.method == 'GET':
                 form = perroForm(instance=perris)
             else:
@@ -122,8 +122,12 @@ def Edita(request):
                 else:
                     print('mal')
                 return redirect('Guau:listarPerros')
+<<<<<<< HEAD
 
             return render(request, 'Admin/gestionPerros.html', {'form':form})
+=======
+            return render(request, 'Admin/Editar.html', {'form':form})
+>>>>>>> 8523f3cd6d6ea9c854f91cd154127d548a0257d3
         else:
             return redirect('Guau:index')
     else:
@@ -135,3 +139,16 @@ def Galeria(request):
 
 def Recupera(request):
     return render(request, 'Recuperar.html')
+
+def Eliminar(request, id):
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            perris = perro.objects.get(id_perro=id)
+            if request.method == 'POST':
+                perris.delete()
+                return redirect('Guau:listarPerros')
+            return render(request, 'Admin/eliminar.html', {'form':form})
+        else:
+            return redirect('Guau:index')
+    else:
+        return redirect('Guau:login')
