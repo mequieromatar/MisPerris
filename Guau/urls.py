@@ -13,5 +13,5 @@ urlpatterns = [
     path('listar',views.perroList, name="listarPerros"),
     path('edita/<int:id>/', views.Edita, name='edita'),
     path('galeria', views.Galeria, name="galeria"),
-    path('recuperar',views.Recupera, name="recuperar"),
+    path('recuperar',views.Recupera, name="recuperar")
 ]
