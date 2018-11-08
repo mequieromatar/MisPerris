@@ -29,19 +29,19 @@ def form(request):
 # login
 def ingre(request):
     if request.user.is_authenticated:
-            if request.user.is_staff:
-                return  redirect('Guau:gestionPerros')
-            else:
-                return redirect('Guau:index')
+        return redirect('Guau:index')
     else:
         if request.method=="POST":
             print('valido')
             user = auth.authenticate(username=request.POST.get("uname"), password=request.POST.get("psw"))
             print(user)
             if user is not None:
-                print('yes')
+                print(user.is_staff)
                 auth.login(request, user)
-                return redirect('Guau:index')
+                if request.user.is_staff:
+                    return  redirect('Guau:gestionPerros')
+                else:
+                    return redirect('Guau:index')
             else:
                 print('Ha ocurido un error')
         return render(request, "login.html")
@@ -117,8 +117,12 @@ def Edita(request):
             else:
                 form = perroForm(request.POST, instance=perris)
                 if form.is_valid:
+                    print('buena')
                     form.save()
+                else:
+                    print('mal')
                 return redirect('Guau:listarPerros')
+
             return render(request, 'Admin/gestionPerros.html', {'form':form})
         else:
             return redirect('Guau:index')
