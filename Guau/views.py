@@ -122,12 +122,12 @@ def Edita(request, id):
                 else:
                     print('mal')
                 return redirect('Guau:listarPerros')
-<<<<<<< HEAD
+
 
             return render(request, 'Admin/gestionPerros.html', {'form':form})
-=======
+
             return render(request, 'Admin/Editar.html', {'form':form})
->>>>>>> 8523f3cd6d6ea9c854f91cd154127d548a0257d3
+
         else:
             return redirect('Guau:index')
     else:
