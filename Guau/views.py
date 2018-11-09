@@ -3,6 +3,7 @@ from django.contrib import auth
 from GestionPerris.Forms import *
 from GestionPerris.models import *
 from django.contrib.auth.models import User
+from django.contrib import messages
 # Create your views here.
 
 
@@ -38,17 +39,20 @@ def ingre(request):
             if user is not None:
                 print(user.is_staff)
                 auth.login(request, user)
+                request.session.set_expiry(60)
                 if request.user.is_staff:
+                    messages.success(request, 'Se ha ingresado con exito')
                     return  redirect('Guau:gestionPerros')
                 else:
                     return redirect('Guau:index')
             else:
-                print('Ha ocurido un error')
+                messages.error(request,'Ha ocurido un error')
         return render(request, "login.html")
 
 # logout
 def salir(request):
     auth.logout(request)
+    messages.success(request,'Se ha cerrado su sesion con exito')
     return redirect("/")
 
 
@@ -86,10 +90,12 @@ def registroPerro(request):
                 if formita.is_valid():
                     print('Es valido')
                     formita.save()
+                    messages.success(request, 'Perrito registrado con exito')
                     return redirect('Guau:listarPerros')
                 else:
                     print(formita.errors)
                     formita = perroForm()
+                    messages.error(request, 'No se logro registrar al perrito')
             return render(request, 'Admin/gestionPerros.html')
         else:
             return redirect('Guau:index')
@@ -118,6 +124,7 @@ def Edita(request, id):
                 form = perroForm(request.POST, instance=perris)
                 if form.is_valid:
                     form.save()
+                    messages.success(request, 'Perro editado con exito')
                 return redirect('Guau:listarPerros')
             return render(request, 'Admin/Editar.html', {'form':form})
         else:
@@ -138,6 +145,7 @@ def Eliminar(request, id):
             perris = perro.objects.get(id_perro=id)
             if request.method == 'POST':
                 perris.delete()
+                messages.error(request, 'Perro eliminado')
                 return redirect('Guau:listarPerros')
             return render(request, 'Admin/eliminar.html', {'form':form})
         else:
