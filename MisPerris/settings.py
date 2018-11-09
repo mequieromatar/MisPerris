@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Guau.apps.GuauConfig',
+    'crispy_forms',
     'GestionPerris.apps.GestionperrisConfig',
 ]
 
@@ -128,3 +129,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'Guau\static'),
     ]
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pruebadjango12@gmail.com'
+EMAIL_HOST_PASSWORD = 'Juancarlos.56'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
