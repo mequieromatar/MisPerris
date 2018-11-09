@@ -38,6 +38,7 @@ def ingre(request):
             if user is not None:
                 print(user.is_staff)
                 auth.login(request, user)
+                request.session.set_expiry(60)
                 if request.user.is_staff:
                     return  redirect('Guau:gestionPerros')
                 else:
