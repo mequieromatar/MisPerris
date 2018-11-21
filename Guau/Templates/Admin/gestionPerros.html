@@ -11,7 +11,17 @@
   <body>
     <div class="container">
     <!-- Panel de registro de perris -->
-    <h1>Registro de Perris</h1><a href='/home'>Home</a>
+    <!-- Mensaje para usuario -->
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+<h1>Registro de Perris</h1><a href='/home'>Home</a>
+
       <div class="Registro">
 
         <form class="formulario" method="post" action="" enctype="multipart/form-data">
@@ -40,13 +50,7 @@
               <a href='/home/listar'>Lista</a>
             </div>
         </form>
-            {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+
       </div>
 
     </div>

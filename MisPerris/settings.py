@@ -67,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -144,16 +146,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 #Registro con Facebook y Twitter
 AUTHENTICATION_BACKENDS  = (
-    'social.backends.facebook.FacebookAppOAuth2',
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     )
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home'
-
-SOCIAL_AUTH_TWITTER_KEY = ''
-SOCIAL_AUTH_TWITTER_SECRET = ''
+LOGIN_REDIRECT_URL = '/home'
+LOGIN_URL = '/home/login'
+LOGOUT_URL = '/'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '579901062441734'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'caaf9c1a90058057d847aed25f9fc553'

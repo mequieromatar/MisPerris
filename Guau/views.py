@@ -47,14 +47,14 @@ def ingre(request):
                 else:
                     return redirect('Guau:index')
             else:
-                messages.error(request,'Ha ocurido un error')
+                messages.error(request,'El nombre de usuario y/o contraseña es incorrecta')
         return render(request, "login.html")
 
 # logout
 def salir(request):
     auth.logout(request)
     messages.success(request,'Se ha cerrado su sesion con exito')
-    return redirect("/")
+    return redirect("/home/login")
 
 
 def admin(request):
