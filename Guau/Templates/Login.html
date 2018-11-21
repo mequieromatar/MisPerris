@@ -34,6 +34,13 @@
         <button type="button" class="Crearbtn"><a href="{% url 'Guau:Registro' %}">Crear</a></button>
         <span class="psw"><a href="{% url 'Guau:password_reset' %}">¿Olvidé mi contraseña?</a></span>
       </div>
+      {% if user.is_authenticated %}
+        <center> <h1> Welcome {{user}}</h1></center>
+        <a href="{% url 'Guau:logout'%}">
+      {% else %}
+        <a href="{% url 'social:begin' 'facebook' %}">Facebook Login</a>
+        <a href="{% url 'social:begin' 'twitter' %}">Twitter Login</a>
+      {% endif %}
     </form>
         {% if messages %}
     <ul class="messages">

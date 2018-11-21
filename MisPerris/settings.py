@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'Guau.apps.GuauConfig',
     'crispy_forms',
     'GestionPerris.apps.GestionperrisConfig',
+    'social.apps.django_app.default',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'MisPerris.urls'
@@ -138,3 +141,19 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pruebadjango12@gmail.com'
 EMAIL_HOST_PASSWORD = 'Juancarlos.56'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+#Registro con Facebook y Twitter
+AUTHENTICATION_BACKENDS  = (
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+    )
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home'
+
+SOCIAL_AUTH_TWITTER_KEY = ''
+SOCIAL_AUTH_TWITTER_SECRET = ''
+
+SOCIAL_AUTH_FACEBOOK_KEY = '579901062441734'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'caaf9c1a90058057d847aed25f9fc553'

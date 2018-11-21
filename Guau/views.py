@@ -4,6 +4,7 @@ from GestionPerris.Forms import *
 from GestionPerris.models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import logout
 # Create your views here.
 
 
@@ -152,3 +153,7 @@ def Eliminar(request, id):
             return redirect('Guau:index')
     else:
         return redirect('Guau:login')
+
+def LogOut(request):
+    logout(request)
+    return redirect('/home/login')
