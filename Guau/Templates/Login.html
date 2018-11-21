@@ -38,12 +38,12 @@
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
-       <button  type="button" class="cancelbtn"><a href="{% url 'Guau:index' %}">Volver</a></button>
-        <button type="button" class="Crearbtn"><a href="{% url 'Guau:Registro' %}">Crear</a></button>
+        <a style="background-color: red; padding: 1vw; color:white" class="cancelarbtn" href="{% url 'Guau:index' %}">Volver</a>
+        <a class="Crearbtn" style="background-color: blue; padding: 1vw;color:white;"href="{% url 'Guau:Registro' %}">Crear</a>
+        <a style="background-color:  #1c68ff; padding: 1vw;color:white;" href="{% url 'social:begin' 'facebook' %}">Ingresa con Facebook</a>
         <span class="psw"><a href="{% url 'Guau:password_reset' %}">¿Olvidé mi contraseña?</a></span>
       </div>
-        <a href="{% url 'social:begin' 'facebook' %}">Facebook Login</a>
-        <a href="{% url 'social:begin' 'twitter' %}">Twitter Login</a>
+
     </form>
 
   </body>
