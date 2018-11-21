@@ -133,8 +133,6 @@ def Edita(request, id):
     else:
         return redirect('Guau:login')
 
-def Galeria(request):
-    return render(request, 'Cliente/Galeria.html')
 
 
 def Recupera(request):
@@ -157,3 +155,8 @@ def Eliminar(request, id):
 def LogOut(request):
     logout(request)
     return redirect('/home/login')
+
+def ListaCliente(request):
+    perris = perro.objects.all()
+    contexto = {'perros':perris}
+    return render(request,'Cliente/listado.html', contexto)
