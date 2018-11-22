@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'GestionPerris.apps.GestionperrisConfig',
     'social.apps.django_app.default',
     'social_django',
+	'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,18 @@ LOGOUT_URL = '/'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '579901062441734'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'caaf9c1a90058057d847aed25f9fc553'
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Guau/static'),
+    ]
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pruebadjango12@gmail.com'
+EMAIL_HOST_PASSWORD = 'Juancarlos.56'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
