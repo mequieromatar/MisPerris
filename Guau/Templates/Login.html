@@ -38,9 +38,10 @@
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
-        <a style="background-color: red; padding: 1vw; color:white" class="cancelarbtn" href="{% url 'Guau:index' %}">Volver</a>
+        <a style="background-color: green; padding: 1vw; color:white" class="cancelarbtn" href="{% url 'Guau:index' %}">Volver</a>
         <a class="Crearbtn" style="background-color: blue; padding: 1vw;color:white;"href="{% url 'Guau:Registro' %}">Crear</a>
-        <a style="background-color:  #1c68ff; padding: 1vw;color:white;" href="{% url 'social:begin' 'facebook' %}">Ingresa con Facebook</a>
+        <!-- <a style="background-color:  #1c68ff; padding: 1vw;color:white;" href="{% url 'social:begin' 'facebook' %}">Ingresa con Facebook</a> -->
+        <a style="background-color:  red; padding: 1vw;color:white;" href="{% url 'social:begin' 'google-oauth2' %}">Ingresa con Google+</a>
         <span class="psw"><a href="{% url 'password_reset' %}">¡Olvidé mi contraseña!</a></span>
       </div>
 
