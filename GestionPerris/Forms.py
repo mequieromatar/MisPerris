@@ -1,23 +1,26 @@
 from django import forms
 from .models import *
 
-class perroForm(forms.ModelForm):
-    class Meta:
-        model = perro
-        fields = ('nombre_perro','foto','raza_predominante','descripcion','estado',)
 
-class adoptanteForm(forms.ModelForm):
-    class Meta:
-        model = adoptante
-        fields = ('email_usuario','run_usuario','nombre_usuario','fono_usuario',
-        'fechanac_usuario','regiones','comunas','tipo_vivienda',)
 
-class usuarioUwuForm(forms.ModelForm):
+class usuarioForm(forms.ModelForm):
     class Meta:
-        model = usuarioUwu
-        fields = ('email_usuario','uname','psw')
+        model = usuario
+        fields = ('email_usuario','run_usuario','nombre_usuario',
+        'fechanac_usuario','contra','id_tipo')
+
+class clienteForm(forms.ModelForm):
+    class Meta:
+        model = cliente
+        fields = ('id_cliente','nombre_cliente','direccion','ciudad','comunas','telefono','correo')
 
 class loginForm(forms.ModelForm):
     class Meta:
         model = usuarioUwu
         fields = ('uname', 'psw')
+
+class ordendetrabajoForm(forms.ModelForm):
+    class Meta:
+        model = ordendetrabajo
+        fields = ('id_orden','id_cliente','run_cliente','nombre_cliente','fecha','hora_ini','hora_term','id_ascensor','modelo_ascensor','descripcion_falla',
+        'descripcion_reparacion','piezas_cambiadas','nombre_receptor', 'id_usuario')

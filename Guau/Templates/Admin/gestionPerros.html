@@ -20,30 +20,30 @@
     </ul>
     {% endif %}
 
-<h1>Registro de Perris</h1><a href='/home'>Home</a>
+<h1>Registro de clientes</h1><a href='/home'>Home</a>
 
       <div class="Registro">
 
         <form class="formulario" method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
 
-            <label for="">Nombre Perro</label>
-            <input type="text" name="nombre_perro"><br>
+            <label for="">Nombre de cliente</label>
+            <input type="text" name="nombre_cliente"><br>
 
-            <label for="">Fotografia</label>
-            <input name="foto" type="file"/><br>
+            <label for="">Direccion</label>
+            <input name="direccion" type="text"/><br>
 
-            <label for="">Raza Predominante</label>
-            <input type="text" name="raza_predominante"><br>
+            <label for="">Ciudad</label>
+            <input type="text" name="ciudad"><br>
 
-            <label for="">Descripción</label>
-            <textarea name="descripcion" rows="3" cols="18"></textarea>
+            <label for="">Comuna</label>
+            <input type="text" name="comunas" id="comunas">
 
-            <label for="">Estado</label>
-            <select name="estado">
-              <option value="R">Rescatado</option>
-              <option value="D">Disponible</option>
-              <option value="A">Adoptado</option>
+            <label for="">Telefono</label>
+            <input type="number" name="telefono" value="">
+
+            <label for="">Correo electronico</label>
+            <input type="text" name="correo" value="">
             </select><br>
             <div class="button"><br>
               <button type="submit" class="registerbtn">Registrar</button>

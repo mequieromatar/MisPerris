@@ -105,16 +105,29 @@ def registroPerro(request):
         return redirect('Guau:login')
 
 def perroList(request):
-    # Listado de los Perros
+    # Listado de los clientes
     if request.user.is_authenticated:
         if request.user.is_staff:
-            perris = perro.objects.all()
-            contexto = {'perros':perris}
+            cliente = cliente.objects.all()
+            contexto = {'clientes':cliente}
             return render(request,'Admin/listarPerros.html', contexto)
         else:
             return redirect('Guau:index')
     else:
-        return redirect('Guau:login')
+        return redirect('Guau:index')
+
+def perroList(request):
+    # Listado de los usuarios
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            usuario = usuario.objects.all()
+            contexto = {'usuarios':usuario}
+            return render(request,'Admin/listarUsuarios.html', contexto)
+        else:
+            return redirect('Guau:index')
+    else:
+        return redirect('Guau:index')
+
 
 def Edita(request, id):
     if request.user.is_authenticated:
