@@ -7,35 +7,36 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{%static 'stlog.css' %} ">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'wena.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
   </head>
-  <body>
-    <form method="post" action="" class="cuadro">
-    <form  class="cuadro"  method="post">
-        {% csrf_token%}
-      <div class="imgcontainer">
-        <img src="{%static 'patita.png' %}" alt="#" class="avatar">
-      </div>
-
+  <body >
+    <form method="post" action="">
       <div class="container">
-        <label for="uname"><b>Nombre de usuario</b></label>
-        <input type="text" placeholder="Nombre de usuario" name="uname" required>
+          <div class="row">
+          		<img   src= "{% static 'uwu.png' %}" alt="">
+           <div class="col">
+             <a href="#" class="fb btn">
+               <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+             </a>
+           </div>
 
-        <label for="psw"><b>contraseña</b></label>
-        <input type="password" placeholder="Contraseña" name="psw" required>
-        <!-- Mensaje para el usuario -->
-            {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+           <div class="col">
+             <div class="hide-md-lg">
+               <p>Or sign in manually:</p>
+             </div>
 
-        <button type="submit">Ingresar</button>
-      </div>
+             <input type="text" name="username" placeholder="Username" required>
+             <input type="password" name="password" placeholder="Password" required>
+             <!-- Mensaje para el usuario -->
+                 {% if messages %}
+             <ul class="messages">
+                 {% for message in messages %}
+                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                 {% endfor %}
+             </ul>
+             {% endif %}
 
       <div class="container" style="background-color:#f1f1f1">
         <a style="background-color: red; padding: 1vw; color:white" class="cancelarbtn" href="{% url 'Guau:index' %}">Volver</a>
@@ -45,7 +46,19 @@
         <span class="psw"><a href="{% url 'password_reset' %}">¡Olvidé mi contraseña!</a></span>
       </div>
 
-    </form>
+         </div>
+       </form>
+     </div>
 
-  </body>
-</html>
+     <div class="bottom-container">
+       <div class="row">
+         <div class="col">
+           <a href="{% url 'Guau:Registro' %}" style="color:white" class="btn">Sign up</a>
+         </div>
+         <div class="col">
+           <a href="#" style="color:white" class="btn">Forgot password?</a>
+         </div>
+       </div>
+     </div>
+   </form>
+</body>

@@ -13,6 +13,7 @@ def index(request):
     return render(request, 'misperritos.html')
 
 
+
 def form(request):
     if request.method == "POST":
         forma = adoptanteForm(request.POST)
