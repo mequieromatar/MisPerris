@@ -9,9 +9,25 @@ from django.contrib.auth import logout
 
 
 def index(request):
-    # Vista principal de los perris
-    return render(request, 'misperritos.html')
-
+#    if request.user.is_authenticated:
+#        return redirect('Guau:index')
+#    else:
+        if request.method=="POST":
+            print('valido')
+            user = auth.authenticate(username=request.POST.get("email_usuario"), password=request.POST.get("contra"))
+            print(user)
+            if user is not None:
+                print(user.is_staff)
+                auth.login(request, user)
+            #    request.session.set_expiry(60)
+                if request.user.is_staff:
+                    messages.success(request, 'Se ha ingresado con exito')
+                    return  redirect('Guau:gestionPerros')
+                else:
+                    return redirect('Guau:listado')
+            else:
+                messages.error(request,'El nombre de usuario y/o contraseña es incorrecta')
+        return render(request, "login.html")
 
 
 def form(request):
@@ -29,28 +45,6 @@ def form(request):
     return render(request, 'index.html')
 
 
-# login
-def ingre(request):
-    if request.user.is_authenticated:
-        return redirect('Guau:index')
-    else:
-        if request.method=="POST":
-            print('valido')
-            user = auth.authenticate(username=request.POST.get("uname"), password=request.POST.get("psw"))
-            print(user)
-            if user is not None:
-                print(user.is_staff)
-                auth.login(request, user)
-                request.session.set_expiry(60)
-                if request.user.is_staff:
-                    messages.success(request, 'Se ha ingresado con exito')
-                    return  redirect('Guau:gestionPerros')
-                else:
-                    return redirect('Guau:index')
-            else:
-                messages.error(request,'El nombre de usuario y/o contraseña es incorrecta')
-        return render(request, "login.html")
-
 # logout
 def salir(request):
     auth.logout(request)
@@ -65,20 +59,17 @@ def admin(request):
 
 def regi(request):
     if request.method == "POST":
-        formita = usuarioUwuForm(request.POST)
+        formita = usuarioForm(request.POST)
         print('Resultado :', request.POST)
         if formita.is_valid():
             print('Es valido')
-            data = formita.cleaned_data
-            u = User.objects.create_user(data.get("uname"), data.get("email_usuario"), data.get("psw"))
-            u.is_staff = False
-            u.save()
-            usuario = usuarioUwu(uname=data.get("uname"), email_usuario=data.get("email_usuario"), psw=data.get("psw"), usuario=u)
-            usuario.save()
+            formita.save()
+            messages.success(request, 'usuario registrado con exito')
             return redirect('Guau:Registro')
         else:
             print(formita.errors)
-            formita = usuarioUwuForm()
+            formita = usuarioForm()
+            messages.error(request, 'No se logro registrar al usuario')
     return render(request, 'Registro.html')
 
 

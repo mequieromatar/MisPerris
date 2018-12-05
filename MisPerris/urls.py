@@ -8,11 +8,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from Guau import views
 from django.contrib.auth import views as auth_views
-from GestionPerris.views import usuarioViewuwu
+from GestionPerris.views import usuarioView
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('Veruwusuarios',usuarioViewuwu)
+router.register('Verusuarios',usuarioView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

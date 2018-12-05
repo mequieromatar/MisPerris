@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from .models import usuarioUwu
-from .serializers import uwuarioSerializer
+from .models import usuario
+from .serializers import usuarioSerializer
 from rest_framework import viewsets
 # Create your views here.
 
 
-class usuarioViewuwu(viewsets.ModelViewSet):
-    queryset = usuarioUwu.objects.all()
-    serializer_class  = uwuarioSerializer
+class usuarioView(viewsets.ModelViewSet):
+    queryset = usuario.objects.all()
+    serializer_class  = usuarioSerializer

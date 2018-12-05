@@ -1,16 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.contrib.auth.models import User
 
 # Create your models here.
-
 class usuario(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     id_usuario = models.AutoField(max_length=6, primary_key=True)
-    email_usuario = models.CharField(max_length=40, null=False)
-    run_usuario = models.CharField(max_length=10, primary_key=True)
+    email_usuario = models.EmailField(max_length=40, null=False)
+    run_usuario = models.CharField(max_length=10, null=False)
     nombre_usuario = models.CharField(max_length=50, null=False)
     fechanac_usuario = models.DateField(null=False)
     contra = models.CharField(max_length=30, null=False)
-    id_tipo = models.CharField(max_length=1, null=False)
+    tipos = ((1,'Mantenedor'),(2,'Administrador'))
+    id_tipo = models.CharField(max_length=1,choices=tipos,default=1)
 
 
 class cliente(models.Model):
@@ -25,8 +27,8 @@ class cliente(models.Model):
 class ordendetrabajo(models.Model):
     id_orden = models.AutoField(max_length=6, primary_key=True)
     id_cliente = models.ForeignKey(cliente,on_delete=models.CASCADE)
-    run_cliente = models.ForeignKey(cliente,on_delete=models.CASCADE)
-    nombre_cliente = models.ForeignKey(cliente,on_delete=models.CASCADE)
+    run_cliente = models.CharField(max_length=10, null=True)
+    nombre_cliente = models.CharField(max_length=50, null=False)
     fecha = models.DateField(null=False)
     hora_ini = models.DateField(null=False)
     hora_term = models.DateField(null=False)

@@ -1,9 +1,9 @@
-from .models import usuarioUwu
+from .models import usuario
 from rest_framework import serializers
 
 
 
-class uwuarioSerializer(serializers.HyperlinkedModelSerializer):
+class usuarioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = usuarioUwu
-        fields = ('email_usuario', 'uname')
+        model = usuario
+        fields = ('email_usuario', 'contra')

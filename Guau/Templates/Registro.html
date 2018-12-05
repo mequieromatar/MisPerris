@@ -13,22 +13,24 @@
   <div class="container">
     <h1>Registro</h1>
     <hr>
-
-    <label for="uname"><b>Usuario</b></label>
-    <input type="text" placeholder="Ingrese su nombre de usuario" name="uname" required>
-
     <label for="email_usuario"><b>Email</b></label>
-    <input type="email" placeholder="Ingrese su correo electronico" name="email_usuario" required>
+    <input type="text" placeholder="Ingrese su correo electronico" name="email_usuario" required>
 
-    <label for="psw"><b>Contraseña</b></label>
-    <input type="password" placeholder="Ingrese su contraseña" name="psw" required>
+    <label for="run_usuario"><b>Run</b></label>
+    <input type="text" placeholder="Ingrese su Run" name="run_usuario" required>
 
+    <label for="nombre_usuario"><b>Nombre</b></label>
+    <input type="text" placeholder="Ingrese su nombre " name="nombre_usuario" required>
 
+    <label for="fechanac_usuario"><b>Fecha de nacimiento</b></label>
+    <input type="date" placeholder="Ingrese su fecha de nacimiento" name="fechanac_usuario" required>
+
+    <label for="contra"><b>Contraseña</b></label>
+    <input type="password" placeholder="Ingrese su contraseña" name="contra" required>
     <button type="submit" class="registerbtn">Registrarse</button>
-  </div>
-
-  <div class="container signin">
-    <p>¿Ya tiene una cuenta? <a href="{% url 'Guau:login' %}">Inciar sesion</a>.</p>
+    <div class="container signin">
+      <p>¿Ya tiene una cuenta? <a href="{% url 'Guau:index' %}">Inciar sesion</a>.</p>
+    </div>
   </div>
 </form>
 
